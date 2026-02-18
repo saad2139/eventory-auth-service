@@ -1,0 +1,9 @@
+{"properties": [{
+  "name": "auth.registration.default-tenant-name",
+  "type": "java.lang.String",
+  "description": "A description for 'auth.registration.default-tenant-name'"
+}]}{"properties": [{
+  "name": "auth.registration.default-tenant-name",
+  "type": "java.lang.String",
+  "description": "A description for 'auth.registration.default-tenant-name'"
+}]}

@@ -1,0 +1,44 @@
+# Exclude version control
+.git
+.gitignore
+
+# Exclude IDE files
+.idea
+*.iws
+*.iml
+*.ipr
+.vscode/
+
+# Exclude OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Exclude build artifacts that we don't need in build context
+target/
+!target/*.jar
+*.class
+
+# Exclude logs
+*.log
+logs/
+
+# Exclude temporary files
+*.tmp
+*.temp
+
+# Exclude documentation
+*.md
+README*
+LICENSE*
+
+# Exclude Docker files (we don't need them inside the image)
+Dockerfile*
+.dockerignore
+
+# Exclude test files if you don't want them in the image
+src/test/
