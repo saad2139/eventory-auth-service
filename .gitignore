@@ -32,3 +32,25 @@ build/
 ### VS Code ###
 .vscode/
 *.pem
+
+# SQL Files - Include migrations, exclude dumps
+## DO commit these
+# src/main/resources/db/migration/*.sql (Flyway migrations)
+# src/test/resources/db/testdata/*.sql (Test data)
+# scripts/*.sql (Utility scripts)
+
+## DON'T commit these
+*_dump.sql
+*_backup.sql
+database_backup*
+*.dump
+local_*.sql
+scratch*.sql
+debug*.sql
+temp*.sql
+personal*.sql
+
+# Large SQL files (over 10MB are probably data dumps)
+*.sql.gz
+*.sql.bz2
+*.sql.zip
