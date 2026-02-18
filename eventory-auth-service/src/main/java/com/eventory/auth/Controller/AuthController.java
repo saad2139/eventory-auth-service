@@ -48,7 +48,7 @@ public AuthController(UserRepository userRepo,
        User user = userRepo.findByEmail(req.email()).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials"));
         
         if(!"ACTIVE".equalsIgnoreCase(user.getStatus()))
-             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User inactive");
+             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Inactive user");
         
         if(!encoder.matches(req.password(), user.getPasswordHash()))
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Invalid credentials");
