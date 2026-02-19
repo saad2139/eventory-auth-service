@@ -54,3 +54,5 @@ personal*.sql
 *.sql.gz
 *.sql.bz2
 *.sql.zip
+auth-service/.env
+/.claude
