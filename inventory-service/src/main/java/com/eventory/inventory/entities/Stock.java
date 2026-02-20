@@ -1,4 +1,4 @@
-package com.eventory.auth.Entities;
+package com.eventory.inventory.entities;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -10,10 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
 @Entity
-@Table(name="users")
-public class User {
+@Table(name = "stock")
+public class Stock {
 
     @Id
     @GeneratedValue(strategy=GenerationType.UUID)
@@ -22,17 +21,20 @@ public class User {
     @Column(name = "tenant_id", nullable = false)
     private UUID tenantId;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column(name = "item_id", nullable = false)
+    private UUID itemId;
 
-    @Column(name = "password_hash", nullable = false)
-    private String passwordHash;
+    @Column(name = "location_id", nullable = false)
+    private UUID locationId;
 
     @Column(nullable = false)
-    private String status = "ACTIVE";
+    private Integer quantity = 0;
 
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt = OffsetDateTime.now();
+
+    @Column(name = "updated_at", nullable = false)
+    private OffsetDateTime updatedAt = OffsetDateTime.now();
 
     public UUID getId() {
         return id;
@@ -46,28 +48,28 @@ public class User {
         this.tenantId = tenantId;
     }
 
-    public String getEmail() {
-        return email;
+    public UUID getItemId() {
+        return itemId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setItemId(UUID itemId) {
+        this.itemId = itemId;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public UUID getLocationId() {
+        return locationId;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setLocationId(UUID locationId) {
+        this.locationId = locationId;
     }
 
-    public String getStatus() {
-        return status;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public OffsetDateTime getCreatedAt() {
@@ -78,5 +80,11 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

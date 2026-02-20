@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
@@ -15,8 +17,7 @@ class UserRoleId implements Serializable {
   private String role;
 
   public UserRoleId() {}
-  public UserRoleId(UUID userId, String role) {
-    this.userId = userId;
+  public UserRoleId(String role) {
     this.role = role;
   }
 
@@ -35,6 +36,7 @@ class UserRoleId implements Serializable {
 public class UserRole {
   @Id
   @Column(name = "user_id", nullable = false)
+  @GeneratedValue(strategy=GenerationType.UUID)
   private UUID userId;
 
   @Id
@@ -42,7 +44,6 @@ public class UserRole {
   private String role;
 
   public UUID getUserId() { return userId; }
-  public void setUserId(UUID userId) { this.userId = userId; }
   public String getRole() { return role; }
   public void setRole(String role) { this.role = role; }
 }
