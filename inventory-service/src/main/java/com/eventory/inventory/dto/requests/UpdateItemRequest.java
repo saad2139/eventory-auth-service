@@ -7,5 +7,4 @@ public record UpdateItemRequest(
     String category,
     String imageUrl
 ) {
-    // All fields optional for partial updates
 }
