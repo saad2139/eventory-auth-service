@@ -42,7 +42,7 @@ public class Reservation {
     @Column(name = "end_time", nullable = false)
     private OffsetDateTime endTime;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String status = "PENDING";
 
     @Column(columnDefinition = "TEXT")

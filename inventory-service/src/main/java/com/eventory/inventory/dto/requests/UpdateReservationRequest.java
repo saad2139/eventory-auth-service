@@ -1,4 +1,4 @@
-package com.eventory.inventory.dto;
+package com.eventory.inventory.dto.requests;
 
 import java.time.OffsetDateTime;
 

@@ -23,16 +23,19 @@ public class Item {
     @Column(columnDefinition="TEXT")
     private String name;
 
-    @Column(length = 100)
+    @Column()
     private String sku;
 
-    @Column(length = 100)
+    @Column()
     private String category;
 
-    @Column(name = "image_url", length = 500)
+    @Column(columnDefinition="TEXT")
+    private String description;
+
+    @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String status = "ACTIVE";
 
     @Column(name="created_at")
@@ -68,6 +71,14 @@ public class Item {
 
     public void setSku(String sku) {
         this.sku = sku;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCategory() {

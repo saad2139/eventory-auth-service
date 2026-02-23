@@ -1,4 +1,4 @@
-package com.eventory.inventory.dto;
+package com.eventory.inventory.dto.responses;
 
 import java.util.UUID;
 import java.time.OffsetDateTime;

@@ -1,4 +1,4 @@
-package com.eventory.inventory.dto;
+package com.eventory.inventory.dto.requests;
 
 public record UpdateItemRequest(
     String name,

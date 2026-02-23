@@ -24,10 +24,10 @@ public class Location {
     @Column(nullable = false)
     private String name;
 
-    @Column(length = 50)
+    @Column()
     private String type;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String status = "ACTIVE";
 
     @Column(name = "created_at", nullable = false)

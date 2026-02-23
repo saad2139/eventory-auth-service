@@ -1,4 +1,4 @@
-package com.eventory.inventory.dto;
+package com.eventory.inventory.dto.requests;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
