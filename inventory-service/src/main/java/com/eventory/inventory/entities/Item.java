@@ -51,7 +51,7 @@ public class Item {
     @Column(name="created_at")
     private OffsetDateTime createdAt;
 
-    @Column(name="created_at")
+    @Column(name="updated_at")
     private OffsetDateTime updatedAt;
 
     @PrePersist

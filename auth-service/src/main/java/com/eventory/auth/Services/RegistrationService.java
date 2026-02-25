@@ -1,7 +1,5 @@
 package com.eventory.auth.Services;
 
-import java.util.UUID;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -53,7 +51,6 @@ public class RegistrationService {
         
         //Create new user
         User user = new User();
-        user.setId(UUID.randomUUID());
         user.setEmail(email);
         user.setPasswordHash(encoder.encode(password));
         user.setStatus("ACTIVE");

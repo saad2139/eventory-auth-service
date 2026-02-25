@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.eventory.inventory.dto.requests.UpdateLocationRequest;
 import com.eventory.inventory.dto.requests.CreateLocationRequest;
 import com.eventory.inventory.dto.responses.LocationResponse;
 import com.eventory.inventory.entities.Location;
@@ -49,15 +50,34 @@ public class LocationService {
     }
 
     @Transactional()
-    public LocationResponse createLocation(UUID tenantId, CreateLocationRequest body){
+    public LocationResponse createLocation(UUID tenantId, CreateLocationRequest req){
         Location location = new Location();
 
         location.setTenantId(tenantId);
-        location.setName(body.name());
-        location.setType(body.type());
+        location.setName(req.name());
+        location.setType(req.type());
         
         return LocationMapper.toResponse(locationRepo.save(location));
 
+    }
+
+    @Transactional()
+    public LocationResponse updateLocation(UUID tenantId, UUID locationId, UpdateLocationRequest req){
+
+        Location location = locationRepo.findOne(Specification.where(LocationSpec.hasTenantId(tenantId).and(LocationSpec.hasId(locationId)))).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Location with that Id not found"));
+        if (req.name() != null) location.setName(req.name());
+        if (req.type() != null) location.setType(req.type());
+        
+        return LocationMapper.toResponse(locationRepo.save(location));
+
+    }
+
+    @Transactional
+    public void deleteLocation(UUID tenantId, UUID locationId) {
+        Location location = locationRepo.findOne(Specification.where(LocationSpec.hasTenantId(tenantId)).and(LocationSpec.hasId(locationId))).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Location not found"));
+        
+        location.setStatus("INACTIVE");
+        locationRepo.save(location);
     }
     
 }
